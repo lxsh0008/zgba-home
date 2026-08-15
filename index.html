@@ -1,0 +1,283 @@
+<!DOCTYPE HTML>
+<!--
+	中国吧 - 机构总入口
+	基于 Editorial by HTML5 UP (html5up.net)
+-->
+<html>
+	<head>
+		<title>中国吧 - 机构总入口</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="description" content="中国吧 - 玄门命理 | AI星闻 | 双语日报 | AI工具导航 | 寰宇译站" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<style>
+			/* 轮播区 */
+			#banner { position: relative; }
+			#banner .carousel-slides { -moz-flex-grow: 1; -webkit-flex-grow: 1; flex-grow: 1; width: 50%; }
+			#banner .carousel-slides .slide { display: none; }
+			#banner .carousel-slides .slide.active { display: block; animation: fadeIn .6s ease; }
+			#banner .carousel-img { width: 50%; margin: 0 0 2em 4em; }
+			@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+			.carousel-dots { text-align: left; padding: 0 0 2em 0; }
+			.carousel-dots .dot {
+				display: inline-block; width: 10px; height: 10px; border-radius: 50%;
+				background: #d5d8da; margin: 0 5px; cursor: pointer; border: none; padding: 0;
+				transition: background .3s;
+			}
+			.carousel-dots .dot.active { background: #f56a6a; }
+			@media screen and (orientation: portrait) {
+				#banner .carousel-slides { width: 100%; }
+				#banner .carousel-img { width: 100%; margin: 0 0 2em 0; }
+				.carousel-dots { text-align: center; }
+			}
+			/* 站徽 */
+			.site-badge {
+				display: inline-block; padding: .15em .6em; border-radius: 3px;
+				font-size: .7em; letter-spacing: .08em; font-weight: 700;
+				vertical-align: middle; color: #fff; margin-right: .4em;
+			}
+			.site-badge.tu { background: #a98467; }
+			.site-badge.huo { background: #e07a5f; }
+			.site-badge.shui { background: #3d6e9e; }
+			.site-badge.jin { background: #b08d57; }
+			.site-badge.mu { background: #5a8f6d; }
+			/* 平级板块卡 */
+			.features article { position: relative; }
+			.features h3 .site-badge { margin-right: .6em; }
+		</style>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="index.html" class="logo"><strong>中国吧</strong> · 玄门命理机构门户</a>
+									<ul class="icons">
+										<li><a href="https://zgba.com" class="icon solid fa-kaaba"><span class="label">玄门命理</span></a></li>
+										<li><a href="https://news.zgba.com" class="icon solid fa-newspaper"><span class="label">AI星闻</span></a></li>
+										<li><a href="https://daily.zgba.com" class="icon solid fa-book-open"><span class="label">双语日报</span></a></li>
+										<li><a href="https://tools.zgba.com" class="icon solid fa-tools"><span class="label">AI工具导航</span></a></li>
+										<li><a href="https://en.zgba.com" class="icon solid fa-globe"><span class="label">寰宇译站</span></a></li>
+									</ul>
+								</header>
+
+							<!-- 轮播: 各分站内容轮换 -->
+								<section id="banner">
+									<div class="carousel-slides">
+										<div class="slide active">
+											<div class="content">
+												<header>
+													<h1>玄门命理</h1>
+													<p><span class="site-badge tu">土</span>八字 · 六爻 · 梅花 · 大六壬 · 奇门 · 紫微斗数</p>
+												</header>
+												<p>集传统命理推演与现代 AI 解读于一体。六大占卜引擎 + AI 智能分析,八字排盘、六爻起卦、梅花易数、大六壬、奇门遁甲、紫微斗数,让玄学智慧惠及大众。</p>
+												<ul class="actions">
+													<li><a href="https://zgba.com" class="button big">进入玄门命理</a></li>
+												</ul>
+											</div>
+										</div>
+										<div class="slide">
+											<div class="content">
+												<header>
+													<h1>AI 星闻</h1>
+													<p><span class="site-badge huo">火</span>聚合全球 14 平台 158 资讯源</p>
+												</header>
+												<p>AI 每两小时自动更新,汇聚科技与 AI 前沿动态。覆盖 14 大平台、158 个权威资讯源,独家归档 13 万条历史数据,一网打尽行业风向。</p>
+												<ul class="actions">
+													<li><a href="https://news.zgba.com" class="button big">进入 AI 星闻</a></li>
+												</ul>
+											</div>
+										</div>
+										<div class="slide">
+											<div class="content">
+												<header>
+													<h1>双语日报</h1>
+													<p><span class="site-badge shui">水</span>每日中英双语科技日报</p>
+												</header>
+												<p>覆盖 24 个英文权威源,AI 每日自动生成中英双语科技日报。读英文练阅读、读中文抓要点,一手掌握全球科技脉搏。</p>
+												<ul class="actions">
+													<li><a href="https://daily.zgba.com" class="button big">进入双语日报</a></li>
+												</ul>
+											</div>
+										</div>
+										<div class="slide">
+											<div class="content">
+												<header>
+													<h1>AI 工具导航</h1>
+													<p><span class="site-badge jin">金</span>精选 AI 工具 · 实用工具集</p>
+												</header>
+												<p>精选主流 AI 工具与实用应用,一站式发现效率神器。ChatGPT、Claude、Midjourney 等热门工具分类导航,快速找到你需要的。</p>
+												<ul class="actions">
+													<li><a href="https://tools.zgba.com" class="button big">进入 AI 工具导航</a></li>
+												</ul>
+											</div>
+										</div>
+										<div class="slide">
+											<div class="content">
+												<header>
+													<h1>寰宇译站</h1>
+													<p><span class="site-badge mu">木</span>English · International Edition</p>
+												</header>
+												<p>面向全球访客的英文国际版门户。以英文呈现机构全部内容与服务,跨越语言边界,联通世界。</p>
+												<ul class="actions">
+													<li><a href="https://en.zgba.com" class="button big">进入寰宇译站</a></li>
+												</ul>
+											</div>
+										</div>
+									</div>
+									<span class="image object carousel-img">
+										<img src="images/pic10.jpg" alt="玄门命理" data-images="images/pic10.jpg|images/pic01.jpg|images/pic02.jpg|images/pic03.jpg|images/pic04.jpg" />
+									</span>
+								</section>
+								<div class="carousel-dots">
+									<button class="dot active" data-slide="0"></button>
+									<button class="dot" data-slide="1"></button>
+									<button class="dot" data-slide="2"></button>
+									<button class="dot" data-slide="3"></button>
+									<button class="dot" data-slide="4"></button>
+								</div>
+
+							<!-- 板块总览: 五站平级 -->
+								<section>
+									<header class="major">
+										<h2>板块总览</h2>
+									</header>
+									<div class="features">
+										<article>
+											<span class="icon solid fa-kaaba"></span>
+											<div class="content">
+												<h3><span class="site-badge tu">土</span><a href="https://zgba.com">玄门命理</a></h3>
+												<p>八字排盘、六爻起卦、梅花易数、大六壬、奇门遁甲、紫微斗数,六大占卜引擎 AI 解读。</p>
+											</div>
+										</article>
+										<article>
+											<span class="icon solid fa-newspaper"></span>
+											<div class="content">
+												<h3><span class="site-badge huo">火</span><a href="https://news.zgba.com">AI 星闻</a></h3>
+												<p>聚合全球 158 资讯源,AI 每 2 小时更新,科技与 AI 前沿一网打尽。</p>
+											</div>
+										</article>
+										<article>
+											<span class="icon solid fa-book-open"></span>
+											<div class="content">
+												<h3><span class="site-badge shui">水</span><a href="https://daily.zgba.com">双语日报</a></h3>
+												<p>每日中英双语科技日报,24 个英文权威源,AI 自动生成。</p>
+											</div>
+										</article>
+										<article>
+											<span class="icon solid fa-tools"></span>
+											<div class="content">
+												<h3><span class="site-badge jin">金</span><a href="https://tools.zgba.com">AI 工具导航</a></h3>
+												<p>精选 AI 工具与实用应用,热门工具分类导航,效率神器一站发现。</p>
+											</div>
+										</article>
+										<article>
+											<span class="icon solid fa-globe"></span>
+											<div class="content">
+												<h3><span class="site-badge mu">木</span><a href="https://en.zgba.com">寰宇译站</a></h3>
+												<p>英文国际版门户,面向全球访客,联通世界。</p>
+											</div>
+										</article>
+										<article>
+											<span class="icon solid fa-chart-line"></span>
+											<div class="content">
+												<h3><span class="site-badge huo">AI</span>持续进化</h3>
+												<p>中国吧机构矩阵持续扩展,更多 AI 板块陆续上线,敬请期待。</p>
+											</div>
+										</article>
+									</div>
+								</section>
+
+						</div>
+					</div>
+
+				<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+
+							<!-- Menu: 平级门户导航 -->
+								<nav id="menu">
+									<header class="major">
+										<h2>门户导航</h2>
+									</header>
+									<ul>
+										<li><a href="https://zgba.com">玄门命理</a></li>
+										<li><a href="https://news.zgba.com">AI 星闻</a></li>
+										<li><a href="https://daily.zgba.com">双语日报</a></li>
+										<li><a href="https://tools.zgba.com">AI 工具导航</a></li>
+										<li><a href="https://en.zgba.com">寰宇译站</a></li>
+									</ul>
+								</nav>
+
+							<!-- Section: 机构信息 -->
+								<section>
+									<header class="major">
+										<h2>关于中国吧</h2>
+									</header>
+									<p>中国吧是集玄学命理、AI 资讯、双语内容、工具导航于一体的综合数字机构矩阵。立足传统文化,拥抱 AI 前沿。</p>
+									<ul class="actions">
+										<li><a href="https://zgba.com" class="button">进入玄门命理</a></li>
+									</ul>
+								</section>
+
+							<!-- Section: 联系 -->
+								<section>
+									<header class="major">
+										<h2>机构信息</h2>
+									</header>
+									<ul class="contact">
+										<li class="icon solid fa-envelope"><a href="mailto:hi@zgba.com">hi@zgba.com</a></li>
+										<li class="icon solid fa-globe">zgba.com</li>
+									</ul>
+								</section>
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; 中国吧 2026. 基于 <a href="https://html5up.net">HTML5 UP Editorial</a> 模板。</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script>
+				// 轮播逻辑
+				(function() {
+					var slides = document.querySelectorAll('#banner .carousel-slides .slide');
+					var dots = document.querySelectorAll('.carousel-dots .dot');
+					var img = document.querySelector('.carousel-img img');
+					var current = 0, timer = null;
+					function show(idx) {
+						current = (idx + slides.length) % slides.length;
+						slides.forEach(function(s, i) { s.classList.toggle('active', i === current); });
+						dots.forEach(function(d, i) { d.classList.toggle('active', i === current); });
+						if (img && img.dataset.images) {
+							var imgs = img.dataset.images.split('|');
+							if (imgs[current]) { img.src = imgs[current]; }
+						}
+					}
+					function next() { show(current + 1); }
+					function start() { timer = setInterval(next, 6000); }
+					function stop() { if (timer) { clearInterval(timer); timer = null; } }
+					dots.forEach(function(d) {
+						d.addEventListener('click', function() { stop(); show(parseInt(d.getAttribute('data-slide'), 10)); start(); });
+					});
+					start();
+				})();
+			</script>
+
+	</body>
+</html>
