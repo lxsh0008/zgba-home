@@ -402,8 +402,31 @@
 							title: 'AI 工具导航 · 热门工具',
 							meta: '精选主流 AI 工具 · 分类导航',
 							render: function(container) {
+								var FALLBACK = [
+									{ nameCn: 'ChatGPT', cat: 'ai-tools', star: '官方大模型' },
+									{ nameCn: 'Stable Diffusion', cat: 'ai-tools', star: 'AI 绘画' },
+									{ nameCn: 'Midjourney', cat: 'ai-tools', star: 'AI 绘图' },
+									{ nameCn: 'AutoGPT 自主智能体', cat: 'agent', star: '186k+' },
+									{ nameCn: 'n8n 低代码自动化', cat: 'agent', star: '200k+' },
+									{ nameCn: 'Ollama 本地大模型', cat: 'ai-tools', star: '178k+' },
+									{ nameCn: 'LangChain', cat: 'ai-tools', star: '大模型框架' },
+									{ nameCn: 'ComfyUI 工作流', cat: 'ai-tools', star: 'AI 绘画' }
+								];
+								function renderList(list) {
+									var h = '<div class="tool-grid">';
+									list.forEach(function(t) {
+										var cat = t.category || t.cat || 'ai-tools';
+										var url = 'https://tools.zgba.com/category/' + cat + '.html';
+										var star = t.starsLabel || t.star || '';
+										h += '<a href="' + url + '" target="_blank" rel="noopener">' + (t.nameCn || t.name || t.id) + (star ? '<span class="tool-star"> ★ ' + star + '</span>' : '') + '</a>';
+									});
+									h += '</div>';
+									container.innerHTML = h;
+								}
 								container.innerHTML = '<div class="panel-loading">正在获取热门工具…</div>';
-								fetch('https://tools.zgba.com/data.js')
+								var ctrl = new AbortController();
+								var timer = setTimeout(function() { ctrl.abort(); }, 8000);
+								fetch('https://tools.zgba.com/data.js', { signal: ctrl.signal })
 									.then(function(r) { return r.text(); })
 									.then(function(txt) {
 										var m = txt.match(/window\.TOOLS_DATA\s*=\s*(\{.*\})\s*;?\s*$/s);
@@ -416,18 +439,10 @@
 										}
 										if (!data || !data.tools || !data.tools.length) throw new Error('no data');
 										var list = data.tools.slice().sort(function(a,b){ return (b.stars||0)-(a.stars||0); }).slice(0, 8);
-										var h = '<div class="tool-grid">';
-										list.forEach(function(t) {
-											var cat = t.category || 'ai-tools';
-											var url = 'https://tools.zgba.com/category/' + cat + '.html';
-											var star = t.starsLabel || '';
-											h += '<a href="' + url + '" target="_blank" rel="noopener">' + (t.nameCn || t.name || t.id) + (star ? '<span class="tool-star"> ★ ' + star + '</span>' : '') + '</a>';
-										});
-										h += '</div>';
-										container.innerHTML = h;
+										renderList(list);
 									})
 									.catch(function(e) {
-										container.innerHTML = '<div class="panel-error">暂时无法加载工具,请访问 <a href="https://tools.zgba.com">tools.zgba.com</a></div>';
+										renderList(FALLBACK);
 									});
 							}
 						},
