@@ -2,6 +2,7 @@
 <!--
 	中国吧 - 机构总入口
 	基于 Editorial by HTML5 UP (html5up.net)
+	右侧内容面板: 随左侧轮播站点动态加载对应站点的实时/主要内容
 -->
 <html>
 	<head>
@@ -25,11 +26,6 @@
 				transition: background .3s;
 			}
 			.carousel-dots .dot.active { background: #f56a6a; }
-			@media screen and (orientation: portrait) {
-				#banner .carousel-slides { width: 100%; }
-				#banner .carousel-img { width: 100%; margin: 0 0 2em 0; }
-				.carousel-dots { text-align: center; }
-			}
 			/* 站徽 */
 			.site-badge {
 				display: inline-block; padding: .15em .6em; border-radius: 3px;
@@ -41,9 +37,55 @@
 			.site-badge.shui { background: #3d6e9e; }
 			.site-badge.jin { background: #b08d57; }
 			.site-badge.mu { background: #5a8f6d; }
-			/* 平级板块卡 */
-			.features article { position: relative; }
-			.features h3 .site-badge { margin-right: .6em; }
+			/* 右侧内容面板 */
+			.content-panel { width: 50%; margin-left: 4em; }
+			.content-panel .panel-inner {
+				background: #f6f4ef; border: 1px solid #e2ded5; border-radius: 8px;
+				padding: 1.5em 1.75em; min-height: 320px;
+			}
+			.content-panel .panel-head {
+				display: flex; align-items: baseline; justify-content: space-between;
+				border-bottom: 1px solid #e2ded5; padding-bottom: .8em; margin-bottom: 1em;
+			}
+			.content-panel .panel-title { margin: 0; font-size: 1.15em; }
+			.content-panel .panel-meta { color: #888; font-size: .8em; }
+			.content-panel .panel-loading, .content-panel .panel-error { color: #888; text-align: center; padding: 3em 0; font-size: .95em; }
+			.content-panel .panel-error { color: #c0392b; }
+			.content-panel ul.panel-list { list-style: none; margin: 0; padding: 0; }
+			.content-panel ul.panel-list li {
+				padding: .55em 0; border-bottom: 1px dashed #e2ded5; font-size: .95em; line-height: 1.5;
+			}
+			.content-panel ul.panel-list li:last-child { border-bottom: none; }
+			.content-panel ul.panel-list li a { color: #4a4a4a; text-decoration: none; }
+			.content-panel ul.panel-list li a:hover { color: #f56a6a; }
+			.content-panel .panel-list .src { color: #999; font-size: .8em; margin-left: .4em; }
+			/* 静态服务网格(玄学) */
+			.svc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .7em; }
+			.svc-grid a {
+				display: block; padding: .8em 1em; background: #fff; border: 1px solid #e2ded5;
+				border-radius: 6px; text-decoration: none; color: #4a4a4a; font-size: .95em;
+				transition: all .2s;
+			}
+			.svc-grid a:hover { border-color: #f56a6a; color: #f56a6a; transform: translateY(-1px); }
+			.svc-grid a .svc-en { display: block; color: #aaa; font-size: .75em; margin-top: .2em; }
+			/* 工具列表 */
+			.tool-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .7em; }
+			.tool-grid a {
+				display: block; padding: .7em 1em; background: #fff; border: 1px solid #e2ded5;
+				border-radius: 6px; text-decoration: none; color: #4a4a4a; font-size: .9em;
+				transition: all .2s;
+			}
+			.tool-grid a:hover { border-color: #f56a6a; color: #f56a6a; }
+			.tool-grid a .tool-star { color: #b08d57; font-size: .8em; }
+			@media screen and (orientation: portrait) {
+				#banner { flex-wrap: wrap; }
+				#banner .carousel-slides { width: 100%; }
+				.content-panel { width: 100%; margin: 0 0 2em 0; }
+				.carousel-dots { text-align: center; }
+			}
+			@media screen and (max-width: 736px) {
+				.svc-grid, .tool-grid { grid-template-columns: 1fr; }
+			}
 		</style>
 	</head>
 	<body class="is-preload">
@@ -67,10 +109,10 @@
 									</ul>
 								</header>
 
-							<!-- 轮播: 各分站内容轮换 -->
-								<section id="banner">
+							<!-- 轮播: 各分站介绍 + 右侧对应实时内容 -->
+								<section id="banner" style="display:flex; align-items:stretch;">
 									<div class="carousel-slides">
-										<div class="slide active">
+										<div class="slide active" data-site="mysticism">
 											<div class="content">
 												<header>
 													<h1>玄门命理</h1>
@@ -82,7 +124,7 @@
 												</ul>
 											</div>
 										</div>
-										<div class="slide">
+										<div class="slide" data-site="news">
 											<div class="content">
 												<header>
 													<h1>AI 星闻</h1>
@@ -94,19 +136,19 @@
 												</ul>
 											</div>
 										</div>
-										<div class="slide">
+										<div class="slide" data-site="daily">
 											<div class="content">
 												<header>
 													<h1>双语日报</h1>
 													<p><span class="site-badge shui">水</span>每日中英双语科技日报</p>
 												</header>
-												<p>覆盖 24 个英文权威源,AI 每日自动生成中英双语科技日报。读英文练阅读、读中文抓要点,一手掌握全球科技脉搏。</p>
+												<p>覆盖 15 个英文权威源,AI 每日自动生成中英双语科技日报。读英文练阅读、读中文抓要点,一手掌握全球科技脉搏。</p>
 												<ul class="actions">
 													<li><a href="https://daily.zgba.com" class="button big">进入双语日报</a></li>
 												</ul>
 											</div>
 										</div>
-										<div class="slide">
+										<div class="slide" data-site="tools">
 											<div class="content">
 												<header>
 													<h1>AI 工具导航</h1>
@@ -118,7 +160,7 @@
 												</ul>
 											</div>
 										</div>
-										<div class="slide">
+										<div class="slide" data-site="en">
 											<div class="content">
 												<header>
 													<h1>寰宇译站</h1>
@@ -131,9 +173,18 @@
 											</div>
 										</div>
 									</div>
-									<span class="image object carousel-img">
-										<img src="images/pic10.jpg" alt="玄门命理" data-images="images/pic10.jpg|images/pic01.jpg|images/pic02.jpg|images/pic03.jpg|images/pic04.jpg" />
-									</span>
+									<!-- 右侧内容面板: 动态展示当前轮播站点的实时内容 -->
+									<div class="content-panel">
+										<div class="panel-inner">
+											<div class="panel-head">
+												<h3 class="panel-title" id="panel-title">正在加载…</h3>
+												<span class="panel-meta" id="panel-meta"></span>
+											</div>
+											<div id="panel-body">
+												<div class="panel-loading">正在加载该站点内容…</div>
+											</div>
+										</div>
+									</div>
 								</section>
 								<div class="carousel-dots">
 									<button class="dot active" data-slide="0"></button>
@@ -167,7 +218,7 @@
 											<span class="icon solid fa-book-open"></span>
 											<div class="content">
 												<h3><span class="site-badge shui">水</span><a href="https://daily.zgba.com">双语日报</a></h3>
-												<p>每日中英双语科技日报,24 个英文权威源,AI 自动生成。</p>
+												<p>每日中英双语科技日报,15 个英文权威源,AI 自动生成。</p>
 											</div>
 										</article>
 										<article>
@@ -254,27 +305,185 @@
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
 			<script>
-				// 轮播逻辑
+				// ─── 右侧内容面板: 随轮播加载对应站点内容 ────────────────
 				(function() {
+					var sites = {
+						mysticism: {
+							title: '玄门命理 · 六大服务',
+							meta: 'AI 智能解读 · 传统命理推演',
+							render: function(container) {
+								var svc = [
+									{ zh: '八字排盘', en: 'BaZi', url: 'https://zgba.com/bazi' },
+									{ zh: '六爻起卦', en: 'LiuYao', url: 'https://zgba.com/liuyao' },
+									{ zh: '梅花易数', en: 'MeiHua', url: 'https://zgba.com/meihua' },
+									{ zh: '大六壬', en: 'DaLiuRen', url: 'https://zgba.com/daliuren' },
+									{ zh: '奇门遁甲', en: 'QiMen', url: 'https://zgba.com/qimen' },
+									{ zh: '紫微斗数', en: 'ZiWei', url: 'https://zgba.com/ziwei' },
+									{ zh: '每日运势', en: 'Daily Fortune', url: 'https://zgba.com/meiri-yunshi' },
+									{ zh: '姓名分析', en: 'Name Analysis', url: 'https://zgba.com/xingming' }
+								];
+								var h = '<div class="svc-grid">';
+								svc.forEach(function(s) {
+									h += '<a href="' + s.url + '">' + s.zh + '<span class="svc-en">' + s.en + '</span></a>';
+								});
+								h += '</div>';
+								container.innerHTML = h;
+							}
+						},
+						news: {
+							title: 'AI 星闻 · 最新资讯',
+							meta: 'AI 每 2 小时自动更新',
+							render: function(container) {
+								container.innerHTML = '<div class="panel-loading">正在获取最新资讯…</div>';
+								fetch('https://news.zgba.com/data/latest-24h.json')
+									.then(function(r) { return r.json(); })
+									.then(function(d) {
+										var items = (d.items || []).slice(0, 7);
+										if (!items.length) throw new Error('empty');
+										var h = '<ul class="panel-list">';
+										items.forEach(function(it) {
+											var t = it.title_bilingual || it.title || it.title_en || '';
+											h += '<li><a href="' + (it.url || '#') + '" target="_blank" rel="noopener">' + t + '</a><span class="src">' + (it.site_name || it.source || '') + '</span></li>';
+										});
+										h += '</ul>';
+										container.innerHTML = h;
+									})
+									.catch(function(e) {
+										container.innerHTML = '<div class="panel-error">暂时无法加载资讯,请访问 <a href="https://news.zgba.com">news.zgba.com</a></div>';
+									});
+							}
+						},
+						daily: {
+							title: '双语日报 · 今日日报',
+							meta: 'AI 每日自动生成 · 中英双语',
+							render: function(container) {
+								container.innerHTML = '<div class="panel-loading">正在获取今日日报…</div>';
+								var today = new Date();
+								var ds = today.getFullYear() + '-' + String(today.getMonth()+1).padStart(2,'0') + '-' + String(today.getDate()).padStart(2,'0');
+								fetch('https://daily.zgba.com/daily/' + ds)
+									.then(function(r) {
+										if (!r.ok) throw new Error('status ' + r.status);
+										return r.text();
+									})
+									.then(function(html) {
+										// 提取 h3 标题(中英), 取前 8 个英文标题
+										var titles = [];
+										var re = /<h3[^>]*>([^<]{3,120})<\/h3>/g, m;
+										while ((m = re.exec(html)) !== null && titles.length < 16) {
+											var t = m[1].replace(/&amp;/g,'&').replace(/&quot;/g,'"').trim();
+											if (t && titles.indexOf(t) === -1) titles.push(t);
+										}
+										if (!titles.length) throw new Error('no titles');
+										var h = '<ul class="panel-list">';
+										titles.slice(0, 8).forEach(function(t) {
+											h += '<li><a href="https://daily.zgba.com/daily/' + ds + '" target="_blank" rel="noopener">' + t + '</a></li>';
+										});
+										h += '</ul>';
+										container.innerHTML = h;
+									})
+									.catch(function(e) {
+										container.innerHTML = '<div class="panel-error">今日日报尚未生成,请访问 <a href="https://daily.zgba.com">daily.zgba.com</a></div>';
+									});
+							}
+						},
+						tools: {
+							title: 'AI 工具导航 · 热门工具',
+							meta: '精选主流 AI 工具 · 分类导航',
+							render: function(container) {
+								container.innerHTML = '<div class="panel-loading">正在获取热门工具…</div>';
+								fetch('https://tools.zgba.com/data.js')
+									.then(function(r) { return r.text(); })
+									.then(function(txt) {
+										var m = txt.match(/window\.TOOLS_DATA\s*=\s*(\{.*\})\s*;?\s*$/s);
+										var data = null;
+										if (m) { try { data = JSON.parse(m[1]); } catch(e) {} }
+										if (!data && txt.indexOf('{') !== -1) {
+											var start = txt.indexOf('{');
+											var end = txt.lastIndexOf('}');
+											try { data = JSON.parse(txt.slice(start, end+1)); } catch(e) {}
+										}
+										if (!data || !data.tools || !data.tools.length) throw new Error('no data');
+										var list = data.tools.slice().sort(function(a,b){ return (b.stars||0)-(a.stars||0); }).slice(0, 8);
+										var h = '<div class="tool-grid">';
+										list.forEach(function(t) {
+											var cat = t.category || 'ai-tools';
+											var url = 'https://tools.zgba.com/category/' + cat + '.html';
+											var star = t.starsLabel || '';
+											h += '<a href="' + url + '" target="_blank" rel="noopener">' + (t.nameCn || t.name || t.id) + (star ? '<span class="tool-star"> ★ ' + star + '</span>' : '') + '</a>';
+										});
+										h += '</div>';
+										container.innerHTML = h;
+									})
+									.catch(function(e) {
+										container.innerHTML = '<div class="panel-error">暂时无法加载工具,请访问 <a href="https://tools.zgba.com">tools.zgba.com</a></div>';
+									});
+							}
+						},
+						en: {
+							title: '寰宇译站 · Today\'s Highlights',
+							meta: 'English · International Edition',
+							render: function(container) {
+								container.innerHTML = '<div class="panel-loading">Loading latest highlights…</div>';
+								var today = new Date();
+								var ds = today.getFullYear() + '-' + String(today.getMonth()+1).padStart(2,'0') + '-' + String(today.getDate()).padStart(2,'0');
+								fetch('https://en.zgba.com/daily/' + ds)
+									.then(function(r) {
+										if (!r.ok) throw new Error('status ' + r.status);
+										return r.text();
+									})
+									.then(function(html) {
+										var titles = [];
+										var re = /<h3[^>]*>([^<]{3,120})<\/h3>/g, m;
+										while ((m = re.exec(html)) !== null && titles.length < 16) {
+											var t = m[1].replace(/&amp;/g,'&').replace(/&quot;/g,'"').trim();
+											if (t && titles.indexOf(t) === -1) titles.push(t);
+										}
+										if (!titles.length) throw new Error('no titles');
+										var h = '<ul class="panel-list">';
+										titles.slice(0, 8).forEach(function(t) {
+											h += '<li><a href="https://en.zgba.com/daily/' + ds + '" target="_blank" rel="noopener">' + t + '</a></li>';
+										});
+										h += '</ul>';
+										container.innerHTML = h;
+									})
+									.catch(function(e) {
+										container.innerHTML = '<div class="panel-error">No highlights yet. Visit <a href="https://en.zgba.com">en.zgba.com</a></div>';
+									});
+							}
+						}
+					};
+
 					var slides = document.querySelectorAll('#banner .carousel-slides .slide');
 					var dots = document.querySelectorAll('.carousel-dots .dot');
-					var img = document.querySelector('.carousel-img img');
+					var titleEl = document.getElementById('panel-title');
+					var metaEl = document.getElementById('panel-meta');
+					var bodyEl = document.getElementById('panel-body');
 					var current = 0, timer = null;
+
+					function renderPanel(idx) {
+						var site = slides[idx] ? slides[idx].getAttribute('data-site') : 'mysticism';
+						var conf = sites[site] || sites.mysticism;
+						if (titleEl) titleEl.textContent = conf.title;
+						if (metaEl) metaEl.textContent = conf.meta || '';
+						if (bodyEl) {
+							bodyEl.innerHTML = '<div class="panel-loading">正在加载该站点内容…</div>';
+							conf.render(bodyEl);
+						}
+					}
+
 					function show(idx) {
 						current = (idx + slides.length) % slides.length;
 						slides.forEach(function(s, i) { s.classList.toggle('active', i === current); });
 						dots.forEach(function(d, i) { d.classList.toggle('active', i === current); });
-						if (img && img.dataset.images) {
-							var imgs = img.dataset.images.split('|');
-							if (imgs[current]) { img.src = imgs[current]; }
-						}
+						renderPanel(current);
 					}
 					function next() { show(current + 1); }
-					function start() { timer = setInterval(next, 6000); }
+					function start() { if (!timer) timer = setInterval(next, 8000); }
 					function stop() { if (timer) { clearInterval(timer); timer = null; } }
 					dots.forEach(function(d) {
 						d.addEventListener('click', function() { stop(); show(parseInt(d.getAttribute('data-slide'), 10)); start(); });
 					});
+					renderPanel(0);
 					start();
 				})();
 			</script>
